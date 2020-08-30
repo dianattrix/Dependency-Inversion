@@ -11,12 +11,16 @@
  * Abstract Class of Person
  */
 class Person {
+private:
+    IPaymentSender* bankTransferSender = new BankTransferSender();
+    IPaymentSender* cashSender = new CashSender();
+    IPaymentSender* checkSender = new CheckSender();
 public:
 
     // Constructors
     Person();
     Person(const std::string &firstName, const std::string &lastName, int documentId);
-    virtual ~Person() = default;
+    virtual ~Person();
 
     // Gets and Sets
     const std::string &getFirstName() const;
